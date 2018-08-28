@@ -1,0 +1,26 @@
+server:
+  port: 9000
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  prefix: /api
+  routes:
+    account:
+      path: /account-service/**
+    payments:
+        path: /payment-service/**
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    restart:
+      enabled: true
